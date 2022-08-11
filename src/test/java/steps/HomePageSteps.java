@@ -25,17 +25,11 @@ public class HomePageSteps {
 
     @When("^User clicks on a specific product (.*)$")
     public void click_on_a_specific_product(String name) {
-        factory.getHomePage().getProductByKeyWord(name);
+        factory.getHomePage().getProductByName(name);
     }
 
-    @And("^User adds to cart product1 (.*)$")
-    public void add_product1_to_cart(String name) {
-        factory.getHomePage().addProductToCartByName(name);
-        factory.getHomePage().navigateTo();
-    }
-
-    @And("^User adds to cart product2 (.*)$")
-    public void add_product2_to_cart(String name) {
+    @And("^User adds to cart product (.*)$")
+    public void add_product_to_cart(String name) {
         factory.getHomePage().addProductToCartByName(name);
         factory.getHomePage().navigateTo();
     }
@@ -58,22 +52,20 @@ public class HomePageSteps {
         factory.getHomePage().getLinkedInButton().click();
     }
 
-    @Then("User should be on Twitter page")
-    public void twitter_page_validation(){
-        wbs.getDriver().getWindowHandles();
-        wbs.getDriver().switchTo().window("Sauce Labs (@saucelabs) / Twitter");
-        methods.validatePage("https://twitter.com/saucelabs");
-    }
-
-    @Then("User should be on Facebook page")
-    public void facebook_page_validation(){
-        methods.validatePage("https://www.facebook.com/saucelabs");
-    }
-
-    @Then("User should be on LinkedIn page")
-    public void linkedin_page_validation(){
-        methods.validatePage("https://www.linkedin.com/company/sauce-labs/");
-    }
+//    @Then("User should be on Twitter page")
+//    public void twitter_page_validation(){
+//        methods.newTabPageValidation("Sauce Labs (@saucelabs) / Twitter","https://twitter.com/saucelabs");
+//    }
+//
+//    @Then("User should be on Facebook page")
+//    public void facebook_page_validation(){
+//        methods.validatePage("https://www.facebook.com/saucelabs");
+//    }
+//
+//    @Then("User should be on LinkedIn page")
+//    public void linkedin_page_validation(){
+//        methods.validatePage("https://www.linkedin.com/company/sauce-labs/");
+//    }
 
     @Then("User navigates to the Shopping Cart and should see product1 (.*) and product2 (.*)$")
     public void navigate_to_the_shopping_cart(String product1, String product2) {

@@ -56,13 +56,13 @@ public class HomePage extends AbstractPage{
         String actualProductName = product.getText();
         Assert.assertEquals(expectedProductName,actualProductName);
     }
-    public void getProductByKeyWord(String name){
+    public void getProductByName(String name){
         String xpath = methods.getXPathThatContainsText(name);
         WebElement product = wbs.getDriver().findElement(By.xpath(xpath));
         product.click();
     }
     public void addProductToCartByName(String name){
-        getProductByKeyWord(name);
+        getProductByName(name);
         addToCartButton.click();
     }
 }

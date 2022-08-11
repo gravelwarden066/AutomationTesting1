@@ -17,13 +17,6 @@ public class Hooks {
         wbs.setScenario(scenario);
     }
 
-    //    @After
-//    public void screenshot (Scenario scenario) {
-//        if (scenario.isFailed()) {
-//            final byte[] screenshot = ((TakesScreenshot) wbs).getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(screenshot, "image/png", "afterScenario");
-//        }
-//    }
     @After
     public void tearDown() {
         if (wbs.getDriver() != null) {

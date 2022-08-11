@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
+import java.util.Set;
+
 
 public class CommonMethods {
 
@@ -45,6 +47,11 @@ public class CommonMethods {
     public void validatePage(String expectedURL) {
         String actualURL = driver.getCurrentUrl();
         Assert.assertEquals(expectedURL, actualURL);
+    }
+    public void newTabPageValidation(Set<String> pageTitle, String pageURL){
+        pageTitle = driver.getWindowHandles();
+        driver.switchTo().window(pageTitle.toString());
+        validatePage(pageURL);
     }
 
     public void scrollToBottomOfThePage() {
