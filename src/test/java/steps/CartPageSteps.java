@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,6 +16,12 @@ public class CartPageSteps {
     PageFactory factory = new PageFactory();
     TestContext wbs = TestContext.getTestContext();
     CommonMethods methods = new CommonMethods(wbs.getDriver());
+
+    @Given("User go to page")
+    public void test(){
+        wbs.getDriver().get("https://www.aboutyou.com/");
+        methods.validatePage("https://www.aboutyou.com/");
+    }
 
     @Given("User navigates to the Cart Page")
     public void navigate_to_the_cart_page(){

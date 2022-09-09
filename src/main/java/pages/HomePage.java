@@ -29,12 +29,6 @@ public class HomePage extends AbstractPage{
     @FindBy(className = "product_sort_container")
     private WebElement productSortDropdown;
 
-    @FindBy(className = "inventory_item_name")
-    private WebElement productName;
-
-    @FindBy(className = "inventory_item_price")
-    private WebElement productPrice;
-
     @FindBy(xpath = "//button[contains(text(),'Add to cart')]")
     private WebElement addToCartButton;
 
@@ -56,13 +50,20 @@ public class HomePage extends AbstractPage{
         String actualProductName = product.getText();
         Assert.assertEquals(expectedProductName,actualProductName);
     }
-    public void getProductByName(String name){
-        String xpath = methods.getXPathThatContainsText(name);
-        WebElement product = wbs.getDriver().findElement(By.xpath(xpath));
-        product.click();
+    public WebElement getProductByName(String productName){
+        String xpath = "//*[contains(text(),'" + productName + "')]/ancestor::div[@class='inventory_item']";
+        WebElement productContainer = wbs.getDriver().findElement(By.xpath(xpath));
+        WebElement product = productContainer.findElement(By.className("inventory_item_name"));
+        return product;
     }
-    public void addProductToCartByName(String name){
-        getProductByName(name);
+    public String getProductPriceByName(String productName) {
+        WebElement productContainer = getProductByName(productName);
+        String productPrice = productContainer.findElement(By.className("inventory_item_price")).getText();
+        return productPrice;
+    }
+    public void addProductToCartByName(String productName){
+        WebElement productContainer = getProductByName(productName);
+        WebElement addToCartButton = productContainer.findElement(By.xpath("//button[contains(text(),'Add to cart')]"));
         addToCartButton.click();
     }
 }

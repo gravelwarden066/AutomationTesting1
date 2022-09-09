@@ -82,8 +82,6 @@ public class CartPage {
         firstNameField.sendKeys(firstName);
         lastNameField.sendKeys(lastName);
         zipCodeField.sendKeys(zipCode);
-        continueButton.click();
-        finishButton.click();
     }
 
     public WebElement getCartProductByName(String productName){

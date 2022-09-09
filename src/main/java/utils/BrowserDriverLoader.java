@@ -20,7 +20,6 @@ public class BrowserDriverLoader {
             System.out.println("Chrome driver loaded");
             return driver;
         }
-
         driver = new ChromeDriver();
         System.out.println("Chrome driver loaded as default");
         return driver;
